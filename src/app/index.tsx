@@ -4,8 +4,6 @@
  * Description: Index route — thin route adapter rendering PostsListScreen.
  */
 
-import React from 'react';
-
 import { PostsListScreen } from '@/modules/posts/presentation/screens/PostsListScreen';
 
 export default function PostsListRoute() {

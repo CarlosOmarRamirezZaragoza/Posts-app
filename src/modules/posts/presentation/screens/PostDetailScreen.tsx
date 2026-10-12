@@ -11,7 +11,7 @@
  */
 
 import { useRouter } from 'expo-router';
-import React, { useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { FlatList, ListRenderItemInfo, Text, TouchableOpacity, View } from 'react-native';
 
 import type { Comment } from '@/modules/posts/domain/entities';
@@ -30,7 +30,7 @@ interface PostDetailScreenProps {
   postId: number;
 }
 
-export const PostDetailScreen: React.FC<PostDetailScreenProps> = ({ postId }) => {
+export const PostDetailScreen = ({ postId }: PostDetailScreenProps) => {
   const router = useRouter();
 
   // Retrieve post from cached list

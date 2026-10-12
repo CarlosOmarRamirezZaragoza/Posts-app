@@ -5,7 +5,6 @@
  */
 
 import { useLocalSearchParams } from 'expo-router';
-import React from 'react';
 
 import { PostDetailScreen } from '@/modules/posts/presentation/screens/PostDetailScreen';
 
