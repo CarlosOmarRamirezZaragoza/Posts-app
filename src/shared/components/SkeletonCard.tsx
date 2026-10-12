@@ -9,7 +9,7 @@
  * over-engineering. Direct Animated API keeps bundle size lean.
  */
 
-import React, { useEffect, useRef } from 'react';
+import { memo, useEffect, useRef } from 'react';
 import { Animated, View } from 'react-native';
 
 interface SkeletonCardProps {
@@ -17,7 +17,7 @@ interface SkeletonCardProps {
   index?: number;
 }
 
-export const SkeletonCard = React.memo<SkeletonCardProps>(({ index = 0 }) => {
+export const SkeletonCard = memo<SkeletonCardProps>(({ index = 0 }) => {
   const opacity = useRef(new Animated.Value(0.3)).current;
 
   useEffect(() => {

@@ -7,7 +7,6 @@
  * messaging so users understand what happened and how to recover.
  */
 
-import React from 'react';
 import { Text, View } from 'react-native';
 
 type EmptyVariant = 'noResults' | 'noFavorites' | 'noPosts';
@@ -35,7 +34,7 @@ const CONFIG: Record<EmptyVariant, { emoji: string; title: string; subtitle: str
   },
 };
 
-export const EmptyState: React.FC<EmptyStateProps> = ({ variant = 'noPosts', searchQuery }) => {
+export const EmptyState = ({ variant = 'noPosts', searchQuery }: EmptyStateProps) => {
   const config = CONFIG[variant];
 
   return (

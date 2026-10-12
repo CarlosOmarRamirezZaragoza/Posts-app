@@ -7,23 +7,23 @@
  * styling for all screens in the application.
  */
 
-import React from 'react';
+import type { ReactNode } from 'react';
 import { StatusBar, StyleSheet, View, ViewStyle } from 'react-native';
 import { SafeAreaView, Edge } from 'react-native-safe-area-context';
 
 interface ScreenProps {
-  children: React.ReactNode;
+  children: ReactNode;
   style?: ViewStyle;
   edges?: Edge[];
   statusBarStyle?: 'light-content' | 'dark-content';
 }
 
-export const Screen: React.FC<ScreenProps> = ({
+export const Screen = ({
   children,
   style,
   edges = ['top', 'left', 'right'],
   statusBarStyle = 'light-content',
-}) => {
+}: ScreenProps) => {
   return (
     <SafeAreaView edges={edges} style={[styles.container, style]}>
       <StatusBar barStyle={statusBarStyle} backgroundColor="#0f0f1a" />

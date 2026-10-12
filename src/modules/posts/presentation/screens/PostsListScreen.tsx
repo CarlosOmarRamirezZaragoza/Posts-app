@@ -11,7 +11,7 @@
  */
 
 import { useRouter } from 'expo-router';
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 
 import type { PostWithCommentCount } from '@/modules/posts/domain/entities';
@@ -26,7 +26,7 @@ import { useFilteredPosts } from '../hooks/useFilteredPosts';
 import { useFavoritesStore } from '../store/favoritesStore';
 import { usePostsUiStore } from '../store/postsUiStore';
 
-export const PostsListScreen: React.FC = () => {
+export const PostsListScreen = () => {
   const router = useRouter();
   const [isRefreshing, setIsRefreshing] = useState(false);
 
