@@ -7,7 +7,6 @@
  * without force-quitting the app. The error message can be customized per-screen.
  */
 
-import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 
 interface ErrorStateProps {
@@ -16,11 +15,11 @@ interface ErrorStateProps {
   onRetry?: () => void;
 }
 
-export const ErrorState: React.FC<ErrorStateProps> = ({
+export const ErrorState = ({
   title = 'Oops!',
   message = 'Something went wrong. Please try again.',
   onRetry,
-}) => {
+}: ErrorStateProps) => {
   return (
     <View
       className="flex-1 items-center justify-center px-8"
