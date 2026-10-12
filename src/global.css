@@ -1,0 +1,11 @@
+/**
+ * Developer: CORZ (https://www.linkedin.com/in/omar-ramirez-6a51b7141/)
+ * Date: 2026-10-12
+ * Description: Global CSS entry point for NativeWind v4.
+ * NativeWind's Metro plugin transforms this file and injects Tailwind utilities
+ * into the React Native StyleSheet bridge. We also import any custom global styles here.
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
