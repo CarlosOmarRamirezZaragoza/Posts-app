@@ -11,7 +11,7 @@
  *   - RefreshControl with dark theme spinner colors
  */
 
-import React, { useCallback } from 'react';
+import { memo, useCallback } from 'react';
 import { FlatList, ListRenderItemInfo, Platform, RefreshControl, StyleSheet } from 'react-native';
 
 import type { PostWithCommentCount } from '@/modules/posts/domain/entities';
@@ -31,7 +31,7 @@ interface PostListProps {
   searchQuery: string;
 }
 
-export const PostList = React.memo<PostListProps>(
+export const PostList = memo<PostListProps>(
   ({
     posts,
     isFavorite,

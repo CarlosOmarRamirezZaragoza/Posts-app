@@ -7,7 +7,7 @@
  * filter recalculations while keeping typing smooth and lag-free.
  */
 
-import React, { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 import { useDebounce } from '@/shared/hooks/useDebounce';
@@ -18,7 +18,7 @@ interface SearchBarProps {
   placeholder?: string;
 }
 
-export const SearchBar = React.memo<SearchBarProps>(
+export const SearchBar = memo<SearchBarProps>(
   ({ value, onSearch, placeholder = 'Search posts by title or body...' }) => {
     const [localQuery, setLocalQuery] = useState(value);
     const debouncedQuery = useDebounce(localQuery, 300);

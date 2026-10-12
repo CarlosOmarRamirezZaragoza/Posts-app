@@ -12,7 +12,7 @@
  * that reflects the current state (saved vs not saved).
  */
 
-import React, { useCallback, useRef } from 'react';
+import { memo, useCallback, useRef } from 'react';
 import { Animated, TouchableOpacity } from 'react-native';
 
 interface FavoriteButtonProps {
@@ -21,45 +21,43 @@ interface FavoriteButtonProps {
   size?: 'sm' | 'md';
 }
 
-export const FavoriteButton = React.memo<FavoriteButtonProps>(
-  ({ isFavorite, onToggle, size = 'md' }) => {
-    const scaleAnim = useRef(new Animated.Value(1)).current;
+export const FavoriteButton = memo<FavoriteButtonProps>(({ isFavorite, onToggle, size = 'md' }) => {
+  const scaleAnim = useRef(new Animated.Value(1)).current;
 
-    // Micro-animation: quick bounce on press for tactile feedback
-    const handlePress = useCallback(() => {
-      Animated.sequence([
-        Animated.timing(scaleAnim, {
-          toValue: 0.85,
-          duration: 80,
-          useNativeDriver: true,
-        }),
-        Animated.spring(scaleAnim, {
-          toValue: 1,
-          useNativeDriver: true,
-          bounciness: 12,
-        }),
-      ]).start();
+  // Micro-animation: quick bounce on press for tactile feedback
+  const handlePress = useCallback(() => {
+    Animated.sequence([
+      Animated.timing(scaleAnim, {
+        toValue: 0.85,
+        duration: 80,
+        useNativeDriver: true,
+      }),
+      Animated.spring(scaleAnim, {
+        toValue: 1,
+        useNativeDriver: true,
+        bounciness: 12,
+      }),
+    ]).start();
 
-      onToggle();
-    }, [onToggle, scaleAnim]);
+    onToggle();
+  }, [onToggle, scaleAnim]);
 
-    const iconSize = size === 'sm' ? 'text-lg' : 'text-2xl';
-    const hitSlop = { top: 8, bottom: 8, left: 8, right: 8 };
+  const iconSize = size === 'sm' ? 'text-lg' : 'text-2xl';
+  const hitSlop = { top: 8, bottom: 8, left: 8, right: 8 };
 
-    return (
-      <TouchableOpacity
-        onPress={handlePress}
-        hitSlop={hitSlop}
-        accessibilityRole="button"
-        accessibilityLabel={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
-        accessibilityState={{ selected: isFavorite }}
-      >
-        <Animated.Text style={{ transform: [{ scale: scaleAnim }] }} className={iconSize}>
-          {isFavorite ? '⭐' : '☆'}
-        </Animated.Text>
-      </TouchableOpacity>
-    );
-  },
-);
+  return (
+    <TouchableOpacity
+      onPress={handlePress}
+      hitSlop={hitSlop}
+      accessibilityRole="button"
+      accessibilityLabel={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+      accessibilityState={{ selected: isFavorite }}
+    >
+      <Animated.Text style={{ transform: [{ scale: scaleAnim }] }} className={iconSize}>
+        {isFavorite ? '⭐' : '☆'}
+      </Animated.Text>
+    </TouchableOpacity>
+  );
+});
 
 FavoriteButton.displayName = 'FavoriteButton';

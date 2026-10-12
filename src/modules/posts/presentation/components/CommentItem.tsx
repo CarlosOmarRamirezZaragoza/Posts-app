@@ -7,7 +7,7 @@
  * Memoized to optimize FlatList rendering in post detail screen.
  */
 
-import React from 'react';
+import { memo } from 'react';
 import { Text, View } from 'react-native';
 
 import type { Comment } from '@/modules/posts/domain/entities';
@@ -16,7 +16,7 @@ interface CommentItemProps {
   comment: Comment;
 }
 
-export const CommentItem = React.memo<CommentItemProps>(({ comment }) => {
+export const CommentItem = memo<CommentItemProps>(({ comment }) => {
   // Generate first character of author name or fallback
   const initial = comment.name.trim().charAt(0).toUpperCase() || '?';
 

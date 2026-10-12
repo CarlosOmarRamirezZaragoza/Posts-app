@@ -7,7 +7,7 @@
  * Memoized to prevent re-renders when parent list items change.
  */
 
-import React from 'react';
+import { memo } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 
 import type { FilterTab } from '../store/postsUiStore';
@@ -19,7 +19,7 @@ interface FilterTabsProps {
   favoritesCount: number;
 }
 
-export const FilterTabs = React.memo<FilterTabsProps>(
+export const FilterTabs = memo<FilterTabsProps>(
   ({ activeFilter, onSelectFilter, totalCount, favoritesCount }) => {
     return (
       <View
